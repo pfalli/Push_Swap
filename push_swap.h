@@ -27,13 +27,21 @@ typedef struct s_stack_node
 }               t_stack_node;
 
 // Handle errors
+int	error_syntax(char *argv);
+int	error_duplicate(t_stack_node *a, int n);
+void	free_stack(t_stack_node **stack);
+void	free_errors(t_stack_node **a);
 
 // Stack initialization
 
 // Nodes initialization
 
 // Stack utils
-
+t_stack_node	*find_last(t_stack_node *stack);
+int	stack_len(t_stack_node *stack);
+bool	stack_sorted(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack);
+t_stack_node	*find_max(t_stack_node *stack)
 // Commands
 
 // Algorithm

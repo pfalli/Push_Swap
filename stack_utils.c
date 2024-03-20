@@ -20,6 +20,7 @@ int	stack_len(t_stack_node *stack) //Define a function that calculates and retur
 		return(0);
 	while (stack)
 		stack = stack->next;
+		count++;
 	return(count);
 }
 
@@ -71,7 +72,7 @@ t_stack_node	*find_min(t_stack_node *stack) //Define a function that searches a 
 t_stack_node	*find_max(t_stack_node *stack) //Define a function that searches a stack and returns the node with the biggest number
 {
 	long max;
-	t_stack_node *big = NULL;
+	t_stack_node *big;
 
 	if(!stack)
 		return NULL;

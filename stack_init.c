@@ -12,53 +12,56 @@
 
 #include "push_swap.h"
 
-static long	ft_atol(const char *s) //Define a function that converts every string into a long value
+static long	ft_atol(const char *s) // atoi that return long
 {
-	long	result;
-	int		sign;
+	long value;
+    int negative = 1;
 
-	result = 0;
-	sign = 1; 
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-			sign = -1;
-		s++;
-	}
-	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
-	return (result * sign);
+    while (s)
+    {
+        if(*s >= 9 && *s <= 13 || *s == ' ')
+            s++;
+    }
+    if(*s == '-' || *s == '+')
+    {
+        if(*s == '-')
+            negative = -1;
+        s++;
+    }
+    while((*s >= '0' && *s <= '9'))
+    {
+        value = value * 10 +(*s - '0');
+        s++;
+    }
+    return(value * negative);
 }
 
-static void	append_node(t_stack_node **stack, int n) //Define a function that searches for the last node to append to the linked list
+static void	append_node(t_stack_node **stack, int n) //function that searches for the last node to append to the linked list
 {
-	t_stack_node	*node; //To store a pointer to the new node to be created with the value `n`
-	t_stack_node	*last_node; //To store a pointer to the current last node of the stack
+	t_stack_node *new_node;
+	t_stack_node *last_node;
 
 	if (!stack)
-		return ;
-	node = malloc(sizeof(t_stack_node)); //Allocate memory for the new node
-	if (!node)
-		return ;
-	node->next = NULL; //Set the next pointer of the new node to NULL because it will be the last node in the list
-	node->nbr = n; //Set the `next` data of of the new node to `n` value
-	if (!(*stack)) //Check if the stack is empty or currently pointing to NULL, indicating a first node needs to be found
+		return NULL;
+	new_node = (t_stack_node*)malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return NULL;
+	new_node->next = NULL;
+	new_node->data = n;
+	if (!(*stack)) // stack empty so we put data new node
 	{
-		*stack = node; //If empty, update the pointer *stack to point to the node, effectively making it the new head of the linked list
-		node->prev = NULL; //Set the head node's previous pointer to NULL as it's the first node
+		*stack = new_node;
+		new_node-> prev = NULL;
 	}
-	else //If the stack is not empty, it means there are existing nodes in the linked list
+	else // stack has data, so we search the last to connect to the first
 	{
-		last_node = find_last(*stack); //In which case, find the last node
-		last_node->next = node; //Append the new node to the last node
-		node->prev = last_node; //Update the previous pointer of the new node and complete the appending
+		last_node = find_last(*stack);
+		last_node->next = new_node;
+		new_node->prev = last_node;
 	}
 }
 
-void	init_stack_node_a(t_stack_node **a, char **argv) //Define a function that initiates stack `a` by handling any errors and appending required nodes to complete a stack
+void	init_stack_node_a(t_stack_node **a, char **argv) //function that initiates stack `a` by handling any errors and appending required nodes to complete a stack
 {
 	long	n;
 	int		i;

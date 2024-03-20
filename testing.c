@@ -95,7 +95,7 @@ int main ()
     t_stack_node* stack = create_node(99);
     stack->next = create_node(45);
     stack->next->next = create_node(1);
-    stack->next->next->next = create_node(10000);
+    stack->next->next->next = create_node(10);
 
     //test the function
     int length = stack_len(stack);
@@ -128,5 +128,4 @@ int main ()
     //find min number
     t_stack_node *small = find_max(stack);
     printf("\nthe max number is: %d", small->data);
-
 }
