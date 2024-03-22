@@ -10,3 +10,83 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+t_stack_node	*find_last(t_stack_node *stack) //Define a function that returns the pointer to the last node
+{
+	if(!stack)
+		return NULL;
+	while (stack->next) // stack points to the current node....stack->next points to the next node
+	{
+		stack = stack->next;
+	}
+	return(stack);
+}
+
+
+static void	rev_rotate(t_stack_node **head) //Define a funtion that rotates a stack's bottom node, to the top
+{
+    t_stack_node *last_node;
+
+    if(!(*head)|| !(*head)->next)
+        return;
+    last_node = find_last(*head);
+    last_node->next = *head;
+    last_node->prev->next = NULL;
+    last_node->prev = NULL;
+    *head = last_node; // i have to append the last to the top, without doesnt work
+    last_node->next->prev = last_node; // (*head)->prev = last_node;
+}
+
+void rra(t_stack_node **a, bool print)
+{
+    rev_rotate(a);
+    if (print)
+        ft_printf("rra\n");
+}
+
+void rrb(t_stack_node **b, bool print)
+{
+    rev_rotate(b);
+    if (print)
+        ft_printf("rrb\n");
+}
+
+void rrr(t_stack_node **a, t_stack_node **b, bool print)
+{
+    rev_rotate(a);
+    rev_rotate(b);
+    if (print)
+        ft_printf("rrr\n");
+}
+
+
+int main()
+    {
+        t_stack_node *head = malloc(sizeof(t_stack_node));
+        t_stack_node *second = malloc(sizeof(t_stack_node));
+        t_stack_node *third = malloc(sizeof(t_stack_node));
+
+        head->data = 1;
+        head->next = second;
+        head->prev = NULL;
+
+        second->data = 2;
+        second->next = third;
+        second->prev = head;    
+
+        third->data = 3;
+        third->next = NULL;
+        third->prev = second;
+
+        printf("Before rotate: %d %d %d\n", head->data, second->data, third->data);
+        rev_rotate(&head);
+        printf("After rotate: %d %d %d\n", head->data, head->next->data, head->next->next->data );
+        rev_rotate(&head);
+        printf("After rotate: %d %d %d\n", head->data, head->next->data, head->next->next->data );
+
+
+    
+
+        return 0;
+    }

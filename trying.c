@@ -10,29 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdbool.h>
 
-static long	ft_atol(const char *s) // atoi that return long
+static char	*substring(char *s, char c) //Define a function that returns the new substring found within a string
 {
-	long value;
-    int negative = 1;
+    char *substring;
+    size_t length = 0;
+    static int i = 0;
+    int x = 0;
 
-    while (*s)
+    // calculate length
+    while (s[i] == c) // to check counting ' ' space, when it left previously
+        i++;
+    if (s[i] == '\0') // to stop infinite loop
+        return NULL;
+    while (s[i + length] != c && s[i + length] != '\0')
+        length++;
+    substring = malloc((length + 1) * sizeof(char));
+    if(!substring)
+        return NULL;
+    while((s[i] != c) && s[i])
     {
-        if(*s >= 9 && *s <= 13 || *s == ' ')
-            s++;
+        substring[x] = s[i];
+        x++;
+        i++;
     }
-    if(*s == '-' || *s == '+')
-    {
-        if(*s == '-')
-            negative = -1;
-        s++;
-    }
-    while((*s >= '0' && *s <= '9'))
-    {
-        value = value * 10 +(*s - '0');
-        s++;
-    }
-    return(value * negative);
+    substring[x] = '\0';
+    return (substring);
 }
 
+int main(void)
+{
+    char *word;
+    while ((word = substring("15 33 44 annabelle love piero 12345678 1234567 123456     ", ' ')) != NULL)
+    {
+        printf("---> %s\n", word);
+        free(word);
+    }
+    return 0;
+}
