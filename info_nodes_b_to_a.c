@@ -11,3 +11,34 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	set_target_node_b(t_stack_node *a, t_stack_node *b) //Define a function that sets for the current `a` node, its target node from stack `a`
+{
+    t_stack_node *target_node_temp;
+    t_stack_node *current_a;
+    long best_matched;
+    while (b)
+    {
+        best_matched = LONG_MIN;
+        current_a = a;
+        while(a)
+        {
+            if (b->data < current_a->data && best_matched < current_a->data )
+            {
+                best_matched = current_a->data;
+                target_node_temp = current_a;
+            }
+            current_a = current_a->next;
+        }
+        if (best_matched == LONG_MIN)
+            b->target_node = find_min
+    }
+
+}
+
+void	info_nodes_b(t_stack_node *a, t_stack_node *b) //Define a function that prepares the nodes for pushing `b` to `a`
+{
+    set_index(a);
+    set_index(b);
+    set_target_node_b(a, b);
+}

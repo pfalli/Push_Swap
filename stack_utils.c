@@ -89,3 +89,36 @@ t_stack_node	*find_max(t_stack_node *stack) //Define a function that searches a 
 	return (big);
 }
 
+t_stack_node	*get_cheapest_node(t_stack_node *stack) //Define a function that searches for the cheapest node, that is set by bool
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+void	put_to_top(t_stack_node **stack, t_stack_node *top_node, char stack_name) //Define a function that moves the required node to the top of the stack
+{
+	while (*stack != top_node) //Check if the required node is not already the first node
+	{
+		if (stack_name == 'a') //If not, and it is stack `a`, execute the following
+		{
+			if (top_node->above_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b') //If not, and it is stack `b`, execute the following
+		{
+			if (top_node->above_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}	
+	}
+}
