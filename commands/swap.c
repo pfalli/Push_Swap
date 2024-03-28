@@ -30,7 +30,7 @@ void	sa(t_stack_node	**a, bool print) //Swap the first two nodes of stack `a` an
 {
     swap(a);
     if (print)
-        ft_printf("sa\n")
+        ft_printf("sa\n");
 }
 
 
