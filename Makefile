@@ -1,42 +1,52 @@
+NAME = push_swap
+
+INC = inc/
+LIBFT = ./libft_full.a
+
+CC = gcc
+FLAGS = -Wall -Werror -Wextra -I
 
 
+COMMAND_DIR = $(commands/ swap.c \
+							rotate.c \
+							rev_rotate.c \
+							push.c\
+							sort_three\
+							sort_stacks.c\
+							both_rotate.c\
+							both_rev_rotate.c\	)
 
+PUSH_SWAP_DIR = $(	push_swap.c\
+				split.c\
+				stack_init.c\
+				stack_utils.c\
+				info_nodes_a_to_b\
+				info_nodes_b_to_b.c\
+				handle_errors.c\	)
 
+SRC = $(COMMAND_DIR) $(PUSH_SWAP_DIR)
 
+OBJS :=	$(SRC:%.c=%.o)
 
+all: $(NAME)
 
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(INC) $(LIBFT) $(OBJS) -o $(NAME)
 
+%.o: %.c:
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
-
-
-
-############################################################################################################################################################################
-# Compiler
-CC := gcc
-
-# Compiler flags
-CFLAGS := -Wall -Wextra -Werror
-
-# Source files
-SRCS := main.c file1.c file2.c
-
-# Object files
-OBJS := $(SRCS:.c=.o)
-
-# Target executable
-TARGET := myprogram
-
-# Default target
-all: $(TARGET)
-
-# Compile source files into object files
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Link object files into the target executable
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
-
-# Clean up object files and the target executable
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
+
+
+
+
