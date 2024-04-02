@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	sort_three(t_stack_node **a) //Define a function that handles when stack `a` has three nodes, and sorts it
 {

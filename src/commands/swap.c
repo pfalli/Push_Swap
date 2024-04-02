@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static void	swap(t_stack_node **head) //Define a function that swaps the positions of the top node and second node of a stack
 {
@@ -29,7 +29,7 @@ static void	swap(t_stack_node **head) //Define a function that swaps the positio
 void	sa(t_stack_node	**a, bool print) //Swap the first two nodes of stack `a` and print the instruction
 {
     swap(a);
-    if (print)
+    if (!print)
         ft_printf("sa\n");
 }
 
@@ -37,7 +37,7 @@ void	sa(t_stack_node	**a, bool print) //Swap the first two nodes of stack `a` an
 void	sb(t_stack_node **b, bool print) //Swap the first two nodes of stack `b` and print the instruction
 {
     swap(b);
-    if(print)
+    if(!print)
         ft_printf("sb\n");
 }
 
@@ -46,7 +46,7 @@ void	ss(t_stack_node **a, t_stack_node **b, bool print) //Stimutaneously swap th
 {
     swap(a);
     swap(b);
-    if(print)
+    if(!print)
         ft_printf("ss\n");
 }
 

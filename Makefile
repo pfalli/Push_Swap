@@ -7,7 +7,7 @@ OBJ_DIR = obj/
 SRC_DIR = src/
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -I
+FLAGS = -Wall -Werror -Wextra -g -I $(INC)
 
 
 COMMANDS_DIR = $(SRC_DIR)/commands/swap.c \
@@ -32,11 +32,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C ./libft
-	$(CC) $(FLAGS) $(INC) $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c 
 	@mkdir -p $(@D)
-	@$(CC) $(FLAGS) $(INC) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 start:
 	make all

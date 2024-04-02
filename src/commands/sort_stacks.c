@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static void	both_rev_rotate(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node) 
 //Define a function that rotates both the bottom `a` and `b` nodes to the top of their stacks, if it's the cheapest move
