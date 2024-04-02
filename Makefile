@@ -1,47 +1,55 @@
-NAME = push_swap
+NAME = push_swap.a
 
-INC = inc/
-LIBFT = ./libft_full.a
+INC = ./inc/
+LIBFT = ./libft/libft.a
+LIBFT_PATH = ./libft/
+OBJ_DIR = obj/
+SRC_DIR = src/
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra -I
 
 
-COMMAND_DIR = $(commands/ swap.c \
-							rotate.c \
-							rev_rotate.c \
-							push.c\
-							sort_three\
-							sort_stacks.c\
-							both_rotate.c\
-							both_rev_rotate.c\	)
+COMMANDS_DIR = $(SRC_DIR)/commands/swap.c \
+						$(SRC_DIR)/commands/rotate.c \
+						$(SRC_DIR)/commands/rev_rotate.c \
+						$(SRC_DIR)/commands/push.c\
+						$(SRC_DIR)/commands/sort_three.c\
+						$(SRC_DIR)/commands/sort_stacks.c
+PUSH_SWAP_DIR = $(addprefix $(SRC_DIR),	push_swap.c\
+										split.c\
+										stack_init.c\
+										stack_utils.c\
+										info_nodes_a_to_b.c\
+										info_nodes_b_to_a.c\
+										handle_errors.c	)
 
-PUSH_SWAP_DIR = $(	push_swap.c\
-				split.c\
-				stack_init.c\
-				stack_utils.c\
-				info_nodes_a_to_b\
-				info_nodes_b_to_b.c\
-				handle_errors.c\	)
+SRCS = $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
 
-SRC = $(COMMAND_DIR) $(PUSH_SWAP_DIR)
-
-OBJS :=	$(SRC:%.c=%.o)
+OBJS	:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o,$(SRCS))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INC) $(LIBFT) $(OBJS) -o $(NAME)
+	@make -C ./libft
+	$(CC) $(FLAGS) $(INC) $(OBJS) $(LIBFT) -o $(NAME)
 
-%.o: %.c:
-	$(CC) $(FLAGS) $(INC) -c $< -o $@
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c 
+	@mkdir -p $(@D)
+	@$(CC) $(FLAGS) $(INC) -c $< -o $@
+
+start:
+	make all
+
+libft:
+	make -C ./libft
 
 clean:
 	rm -f $(OBJS)
-
+	make clean -C ./libft
 fclean: clean
 	rm -f $(NAME)
-
+	rm -f $(LIBFT)
 re: fclean all
 
 .PHONY: all clean fclean re

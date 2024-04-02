@@ -31,7 +31,10 @@ static void	set_target_node_b(t_stack_node *a, t_stack_node *b) //Define a funct
             current_a = current_a->next;
         }
         if (best_matched == LONG_MIN)
-            b->target_node = find_min
+            b->target_node = find_min(a);
+            else
+            b->target_node = target_node_temp;
+        b = b->next;
     }
 
 }

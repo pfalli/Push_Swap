@@ -18,7 +18,10 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
+# include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
 
+// double linked list
 typedef struct s_stack_node
 {
     int data;
@@ -31,6 +34,9 @@ typedef struct s_stack_node
     struct s_stack_node *prev;
 }               t_stack_node;
 
+// Utils
+char **split(char *s, char c);
+
 // Handle errors
 int	            error_syntax(char *argv);
 int	            error_duplicate(t_stack_node *a, int n);
@@ -38,16 +44,13 @@ void	        free_stack(t_stack_node **stack);
 void	        free_errors(t_stack_node **a);
 
 // Stack initialization
-static long	    ft_atol(const char *s);
-static void	    append_node(t_stack_node **stack, int n);
 void	        init_stack_node_a(t_stack_node **a, char **argv);
 
 // Nodes initialization
 void	        set_index(t_stack_node *stack);
-static void	    set_target_node_a(t_stack_node *a, t_stack_node *b);
-static void	    set_on_top_cost(t_stack_node *a, t_stack_node *b);
 void	        set_cheapest(t_stack_node *stack);
 void	        info_nodes_a(t_stack_node *a, t_stack_node *b);
+void	info_nodes_b(t_stack_node *a, t_stack_node *b);
 
 // Stack utils
 t_stack_node	*find_last(t_stack_node *stack);
@@ -55,6 +58,8 @@ int	            stack_len(t_stack_node *stack);
 bool	        stack_sorted(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
+t_stack_node	*get_cheapest_node(t_stack_node *stack);
+void	put_to_top(t_stack_node **stack, t_stack_node *top_node, char stack_name);
 
 // Commands
 void            ra(t_stack_node **a, bool print);

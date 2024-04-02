@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   both_rotate.c                                      :+:      :+:    :+:   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 09:39:15 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/27 09:39:15 by pfalli           ###   ########.fr       */
+/*   Created: 2024/01/11 15:17:21 by pfalli            #+#    #+#             */
+/*   Updated: 2024/01/16 15:17:02 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-static void	both_rotate(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node) // rotate both if it's the cheapest move
+int	ft_print_u(unsigned int nbr)
 {
-	if (*b != cheapest_node->target_node && *a != cheapest_node)
+	int	count;
+
+	count = 0;
+	if (nbr < 10)
+		count += ft_print_char(nbr + '0');
+	else
 	{
-		rr(a, b, false);
-		set_index(a);
-		set_index(b);
+		count += ft_print_u(nbr / 10);
+		count += ft_print_u(nbr % 10);
 	}
+	return (count);
 }

@@ -19,8 +19,10 @@ int	stack_len(t_stack_node *stack) //Define a function that calculates and retur
 	if (!stack)
 		return(0);
 	while (stack)
+	{
 		stack = stack->next;
 		count++;
+	}
 	return(count);
 }
 

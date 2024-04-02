@@ -19,7 +19,7 @@ static long	ft_atol(const char *s) // atoi that return long
 
     while (s)
     {
-        if(*s >= 9 && *s <= 13 || *s == ' ')
+        if((*s >= 9 && *s <= 13) || *s == ' ')
             s++;
     }
     if(*s == '-' || *s == '+')
@@ -42,10 +42,10 @@ static void	append_node(t_stack_node **stack, int n) //function that searches fo
 	t_stack_node *last_node;
 
 	if (!stack)
-		return NULL;
+		return;
 	new_node = (t_stack_node*)malloc(sizeof(t_stack_node));
 	if (!new_node)
-		return NULL;
+		return;
 	new_node->next = NULL;
 	new_node->data = n;
 	if (!(*stack)) // stack empty so we put data new node

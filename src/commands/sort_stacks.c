@@ -12,35 +12,30 @@
 
 #include "push_swap.h"
 
-void	sort_stacks(t_stack_node **a, t_stack_node **b) 
+static void	both_rev_rotate(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node) 
+//Define a function that rotates both the bottom `a` and `b` nodes to the top of their stacks, if it's the cheapest move
 {
-	int length_a;
-
-	length_a = stack_len(*a);
-	if (length_a > 3 && !(stack_sorted))
-		pa(a, b, false);
-	if (length_a > 3 && !(stack_sorted))
-		pa(a, b, false);
-	while ((length_a > 3 && !(stack_sorted)))
+	if (*b != cheapest_node->target_node && *a != cheapest_node)
 	{
-		info_nodes_a(a, b);
-		move_a_to_b(a, b);
+		rrr(a, b, false);
+		set_index(*a);
+		set_index(*b);
 	}
-	sort_three(*a);
-	while (*b)
-	{
-		info_nodes_b(a, b);
-		move_b_to_a(a, b);
-	}
-	set_index(*a);
-	min_to_top(*a);
 }
 
-
-
-static void	move_a_to_b(t_stack_node **a, t_stack_node **b) 
+static void	both_rotate(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node) // rotate both if it's the cheapest move
 {
-	t_stack_node *cheapest_node = get_cheapest(a);
+	if (*b != cheapest_node->target_node && *a != cheapest_node)
+	{
+		rr(a, b, false);
+		set_index(*a);
+		set_index(*b);
+	}
+}
+
+static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
+{
+	t_stack_node *cheapest_node = get_cheapest_node(*a);
 	// in case of both_rotate
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median )
 		both_rotate(a, b, cheapest_node);
@@ -54,14 +49,13 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	pb(b, a, false);
 }
 
-
-static void	move_b_to_a(t_stack_node **a, t_stack_node **b) // stack B is already in order
+static void	move_b_to_a(t_stack_node **a, t_stack_node **b)// stack B is already in order
 {
 	put_to_top(a, (*b)->target_node, 'b');
 	pa(a, b, false);
 }
 
-static void	min_on_top(t_stack_node **a)
+static void	min_to_top(t_stack_node **a)
 {
 
 	t_stack_node *node = find_min(*a);
@@ -75,4 +69,26 @@ static void	min_on_top(t_stack_node **a)
 	}
 }
 
+void	sort_stacks(t_stack_node **a, t_stack_node **b)
+{
+	int length_a;
 
+	length_a = stack_len(*a);
+	if (length_a > 3 && !stack_sorted(*a))
+		pa(a, b, false);
+	if (length_a > 3 && !stack_sorted(*a))
+		pa(a, b, false);
+	while ((length_a > 3 && !stack_sorted(*a)))
+	{
+		info_nodes_a(*a, *b);
+		move_a_to_b(a, b);
+	}
+	sort_three(a);
+	while (*b)
+	{
+		info_nodes_b(*a, *b);
+		move_b_to_a(a, b);
+	}
+	set_index(*a);
+	min_to_top(a);
+}

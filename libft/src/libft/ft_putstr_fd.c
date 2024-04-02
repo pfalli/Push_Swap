@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   both_rev_rotate.c                                  :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 09:39:27 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/27 09:39:27 by pfalli           ###   ########.fr       */
+/*   Created: 2023/12/04 12:37:26 by pfalli            #+#    #+#             */
+/*   Updated: 2024/02/14 13:32:41 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static void	both_rev_rotate(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node) 
-//Define a function that rotates both the bottom `a` and `b` nodes to the top of their stacks, if it's the cheapest move
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (*b != cheapest_node->target_node && *a != cheapest_node)
+	while (*s != 0)
 	{
-		rrr(a, b, false);
-		set_index(a);
-		set_index(b);
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
 }
