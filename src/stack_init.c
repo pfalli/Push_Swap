@@ -14,14 +14,11 @@
 
 static long	ft_atol(const char *s) // atoi that return long
 {
-	long value;
+	long value = 0;
     int negative = 1;
 
-    while (s)
-    {
-        if((*s >= 9 && *s <= 13) || *s == ' ')
-            s++;
-    }
+    while ((*s >= 9 && *s <= 13) || *s == ' ')
+        s++;
     if(*s == '-' || *s == '+')
     {
         if(*s == '-')

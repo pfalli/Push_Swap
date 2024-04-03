@@ -75,6 +75,7 @@ void        	sb(t_stack_node **b, bool print);
 void        	ss(t_stack_node **a, t_stack_node **b, bool print);
 // Algorithm
 void	        sort_three(t_stack_node **a);
-void	        sort_stacks(t_stack_node **a, t_stack_node **b); 
+void	        sort_stacks(t_stack_node **a, t_stack_node **b);
+
 
 #endif

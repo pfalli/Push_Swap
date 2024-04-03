@@ -1,14 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_a_to_b.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 10:47:59 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/12 10:47:59 by pfalli           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdbool.h>
+# include "inc\push_swap.h"
+#include <assert.h>
 
 #include "../inc/push_swap.h"
 
@@ -80,8 +76,6 @@ static void	set_on_top_cost(t_stack_node *a, t_stack_node *b) // cost analisis t
 	{
 		//	if (!a->target_node)
         //	    return;
-		printf("a->data = %d\n", a->data);
-		printf("a->target_node->data = %d\n", a->target_node->data);
 		a->on_top_cost = a->index;
 		if (!(a->above_median))
 			a->on_top_cost = len_a - (a->index);
@@ -90,7 +84,6 @@ static void	set_on_top_cost(t_stack_node *a, t_stack_node *b) // cost analisis t
 		else
 			a->on_top_cost += len_b - (a->target_node->index);
 		a = a->next;
-		printf("a->on_top_cost = %d\n", a->on_top_cost);
 	}
 	
 }
@@ -123,11 +116,6 @@ void	info_nodes_a(t_stack_node *a, t_stack_node *b)
 	set_index(a);
 	set_index(b);
 	set_target_node_a(a, b);
-	//	printf("a->data = %d\n", a->data);
-	//	printf("a->target_node->data = %d\n", a->target_node->data);
-	//	printf("a->index = %d\n", a->index);
-	//	printf("a->target_node->index = %d\n", a->target_node->index);
-	//	printf("a->above_median = %d\n", a->above_median);
 	set_on_top_cost(a, b);
 	set_cheapest(a);
 }

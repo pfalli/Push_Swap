@@ -94,7 +94,7 @@ char **split(char *s, char c) //Define a function that returns the substrings in
 //     char **total_array = split("15 33 44", ' ');
 //     while (*total_array != NULL)
 //     {
-//          printf("---> %s", *total_array);
+//          printf("%s\n", *total_array);
 //          total_array++;
 //     }
 //     return (0);

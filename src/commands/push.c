@@ -38,14 +38,14 @@ static void	push(t_stack_node **dst, t_stack_node **src) //Define a function tha
 }
 
 
-void pa(t_stack_node **a, t_stack_node **b , bool print)
+void pa(t_stack_node **a, t_stack_node **b , bool print) // to stack A
 {
     push(a, b);
     if (!print)
         ft_printf("pa\n");
 }
 
-void pb(t_stack_node **a, t_stack_node **b, bool print)
+void pb(t_stack_node **a, t_stack_node **b, bool print) // to stack B
 {
     push(b, a);
     if (!print)

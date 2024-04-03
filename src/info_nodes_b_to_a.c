@@ -19,20 +19,20 @@ static void	set_target_node_b(t_stack_node *a, t_stack_node *b) //Define a funct
     long best_matched;
     while (b)
     {
-        best_matched = LONG_MIN;
+        best_matched = LONG_MAX;
         current_a = a;
-        while(a)
+        while(current_a)
         {
-            if (b->data < current_a->data && best_matched < current_a->data )
+            if (b->data < current_a->data && best_matched > current_a->data)
             {
                 best_matched = current_a->data;
                 target_node_temp = current_a;
             }
             current_a = current_a->next;
         }
-        if (best_matched == LONG_MIN)
+        if (best_matched == LONG_MAX)
             b->target_node = find_min(a);
-            else
+        else
             b->target_node = target_node_temp;
         b = b->next;
     }
