@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-static long	ft_atol(const char *s) // atoi that return long
+// Function to convert a char to a long number. In case the input
+// passed is bigger than the integer limits
+static long	ft_atol(const char *s) 
 {
 	long value = 0;
     int negative = 1;
 
-    while ((*s >= 9 && *s <= 13) || *s == ' ')
+    while ((*s >= 9 && *s <= 13) || *s == 32)
         s++;
     if(*s == '-' || *s == '+')
     {

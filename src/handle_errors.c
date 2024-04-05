@@ -64,6 +64,6 @@ void	free_stack(t_stack_node **stack) //Define a function to free a stack if the
 void	free_errors(t_stack_node **a) //Define a function that, upon encountering a unique error, to free the stack and print an error message
 {
     free_stack(a);
-    ft_printf("Error\n");
+    ft_putendl_fd(stderr, "Error");
     exit(1);
 }

@@ -23,7 +23,7 @@ void	set_index(t_stack_node *stack) // give index and above_median to nodes
 	while (stack)
 	{
 		stack->index = i;
-		if (i < median)
+		if (i <= median)
 			stack->above_median = true;
 		else	
 			stack->above_median = false;
@@ -43,9 +43,9 @@ static void	set_target_node_a(t_stack_node *a, t_stack_node *b)//find target_nod
 	{
 		best_matched = LONG_MIN;
 		current_b = b;
-		while(b)
+		while(current_b)
 		{
-			if (a->data > current_b->data && best_matched < current_b->data)
+			if (current_b->data < a->data && current_b->data > best_matched)
 			{
 				best_matched = current_b->data;
 				target_node_temp = current_b;
@@ -70,18 +70,11 @@ static void	set_on_top_cost(t_stack_node *a, t_stack_node *b) // cost analisis t
 	int	len_a; 
 	int	len_b;
 
-	//	if (!a || !b)
-    //	    return;
-
 	len_a = stack_len(a);
 	len_b = stack_len(b);
 
 	while (a)
 	{
-		//	if (!a->target_node)
-        //	    return;
-		printf("a->data = %d\n", a->data);
-		printf("a->target_node->data = %d\n", a->target_node->data);
 		a->on_top_cost = a->index;
 		if (!(a->above_median))
 			a->on_top_cost = len_a - (a->index);
@@ -90,7 +83,6 @@ static void	set_on_top_cost(t_stack_node *a, t_stack_node *b) // cost analisis t
 		else
 			a->on_top_cost += len_b - (a->target_node->index);
 		a = a->next;
-		printf("a->on_top_cost = %d\n", a->on_top_cost);
 	}
 	
 }
@@ -123,11 +115,6 @@ void	info_nodes_a(t_stack_node *a, t_stack_node *b)
 	set_index(a);
 	set_index(b);
 	set_target_node_a(a, b);
-	//	printf("a->data = %d\n", a->data);
-	//	printf("a->target_node->data = %d\n", a->target_node->data);
-	//	printf("a->index = %d\n", a->index);
-	//	printf("a->target_node->index = %d\n", a->target_node->index);
-	//	printf("a->above_median = %d\n", a->above_median);
 	set_on_top_cost(a, b);
 	set_cheapest(a);
 }

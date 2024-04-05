@@ -37,13 +37,10 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	// in case both rotate
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median )
 		both_rotate(a, b, cheapest_node);
-	else if (!(cheapest_node->above_median) && !cheapest_node->target_node->above_median)
+	else if (!(cheapest_node->above_median) && !(cheapest_node->target_node->above_median))
 		both_rev_rotate(a, b, cheapest_node);
-	// in case only one rotate
 	put_to_top(a, cheapest_node, 'a');
 	put_to_top(b, cheapest_node->target_node, 'b');
-	//	set_index(*a);
-	//	set_index(*b);
 	pb(b, a, false);
 }
 
@@ -53,14 +50,12 @@ static void	move_b_to_a(t_stack_node **a, t_stack_node **b)// stack B is already
 	pa(a, b, false);
 }
 
-static void	min_to_top(t_stack_node **a)
+static void	min_on_top(t_stack_node **a) //Define a function that moves the smallest number to the top
 {
-	t_stack_node *node = find_min(*a);
-	
-	while (node->data != (*a)->data)
+	while ((*a)->data != find_min(*a)->data) //As long as the smallest number is not at the top
 	{
-		if (node->above_median)
-			ra(a,false);
+		if (find_min(*a)->above_median) //Rotate or reverse rotate according to the position of the node on the median
+			ra(a, false);
 		else
 			rra(a, false);
 	}
@@ -71,16 +66,10 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	int length_a;
 
 	length_a = stack_len(*a);
-	if (length_a > 3 && !stack_sorted(*a)) // length_a-- DIDNT WORK! why?
-	{
-		pb(a, b, false);
-		length_a--;
-	}
-	if (length_a > 3 && !stack_sorted(*a))
-	{
+	if (length_a-- > 3 && !stack_sorted(*a)) // length_a-- DIDNT WORK! why?
 		pb(b, a, false);
-		length_a--;
-	}
+	if (length_a-- > 3 && !stack_sorted(*a))
+		pb(b, a, false);
 	while ((length_a-- > 3 && !stack_sorted(*a)))
 	{
 		info_nodes_a(*a, *b);
@@ -93,7 +82,7 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 		move_b_to_a(a, b);
 	}
 	set_index(*a);
-	min_to_top(a);
+	min_on_top(a);
 }
 
 //  t_stack_node *create_new_node(int num)

@@ -14,7 +14,7 @@
 
 static void	swap(t_stack_node **head) //Define a function that swaps the positions of the top node and second node of a stack
 {
-    if ((*head) || (*head)->next)
+    if (!*head || !(*head)->next)
         return;
     *head = (*head)->next;
     (*head)->prev->prev = *head;

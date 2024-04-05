@@ -17,9 +17,9 @@ void	sort_three(t_stack_node **a) //Define a function that handles when stack `a
     t_stack_node *biggest;
 
     biggest = find_max(*a);
-    if (biggest == (*a))
+    if (biggest == *a)
         ra(a, false);
-    else if (biggest == (*a)->next)
+    else if ((*a)->next == biggest)
         rra(a, false);
     if ((*a)->data > (*a)->next->data)
         sa(a, false);
