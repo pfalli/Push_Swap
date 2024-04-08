@@ -33,7 +33,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@make -C ./libft
 	$(CC) $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	mv $(NAME).exe $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c 
 	@mkdir -p $(@D)

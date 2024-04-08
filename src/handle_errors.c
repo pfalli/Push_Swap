@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 13:56:29 by pfalli            #+#    #+#             */
-/*   Updated: 2024/04/01 13:56:29 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/08 16:51:14 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 
 int	error_syntax(char *str_n) //Define a funtion to handle syntax errors, and returns `1` for `error` should any of the following conditions are met
 {
-	if (!(*str_n == '+'
-			|| *str_n == '-'
-			|| (*str_n >= '0' && *str_n <= '9'))) //Check if the first character of the input string does not contain a sign or a digit
+	if (!(*str_n == '+'|| *str_n == '-'|| (*str_n >= '0' && *str_n <= '9'))) //Check if the first character of the input string does not contain a sign or a digit
 		return (1);
-	if ((*str_n == '+'
-			|| *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9')) //Check if the first character of the input string contains a sign, but the second character does not contain a digit
+	if ((*str_n == '+'|| *str_n == '-') && !(str_n[1] >= '0' && str_n[1] <= '9')) //Check if the first character of the input string contains a sign, but the second character does not contain a digit
 		return (1);
 	while (*++str_n) //If the error conditions above are passed, pre-increment to point to the next character in the string, and loop until the end of the string is reached
 	{
@@ -64,6 +60,6 @@ void	free_stack(t_stack_node **stack) //Define a function to free a stack if the
 void	free_errors(t_stack_node **a) //Define a function that, upon encountering a unique error, to free the stack and print an error message
 {
     free_stack(a);
-    ft_putendl_fd(stderr, "Error");
+    ft_putendl_fd("Error", 2);
     exit(1);
 }

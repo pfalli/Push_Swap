@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:50:32 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/12 10:50:32 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/08 17:02:45 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	t_stack_node *cheapest_node;
 	
 	cheapest_node = get_cheapest_node(*a);
-
 	// in case both rotate
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median )
 		both_rotate(a, b, cheapest_node);
