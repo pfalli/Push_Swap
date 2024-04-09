@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.utils.c                                      :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:45:29 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/12 10:45:29 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/09 14:51:48 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_stack_node	*get_cheapest_node(t_stack_node *stack) //Define a function that se
 			return (stack);
 		stack = stack->next;
 	}
+	free(stack);
 	return (NULL);
 }
 

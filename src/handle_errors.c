@@ -6,14 +6,14 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 13:56:29 by pfalli            #+#    #+#             */
-/*   Updated: 2024/04/08 16:51:14 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/09 13:40:48 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
 
-int	error_syntax(char *str_n) //Define a funtion to handle syntax errors, and returns `1` for `error` should any of the following conditions are met
+int	error_syntax(char *str_n) //Define a function to handle syntax errors, and returns `1` for `error` should any of the following conditions are met
 {
 	if (!(*str_n == '+'|| *str_n == '-'|| (*str_n >= '0' && *str_n <= '9'))) //Check if the first character of the input string does not contain a sign or a digit
 		return (1);
@@ -33,7 +33,7 @@ int	error_duplicate(t_stack_node *a, int n) //Define a function that checks for 
         return 0;
     while (a)
     {
-        if(a->data == n)        /// DIDNT CHECK
+        if(a->data == n)
             return 1;
         a = a->next;
     }
@@ -60,6 +60,6 @@ void	free_stack(t_stack_node **stack) //Define a function to free a stack if the
 void	free_errors(t_stack_node **a) //Define a function that, upon encountering a unique error, to free the stack and print an error message
 {
     free_stack(a);
-    ft_putendl_fd("Error", 2);
-    exit(1);
+    write(2, "Error\n", 6);
+	exit(1);
 }

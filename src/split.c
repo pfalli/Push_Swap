@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 09:13:30 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/12 09:13:30 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/09 12:40:43 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ char **split(char *s, char c) //Define a function that returns the substrings in
     int words;
     char **total_array;
     int i = 0;
-    int x = 0;
 
     words = count_words(s, c);
     if(!words)
@@ -72,20 +71,18 @@ char **split(char *s, char c) //Define a function that returns the substrings in
     total_array = malloc((words + 2) * sizeof(char*));
     if (!total_array)
         return NULL;
-    while (words-- > 0) // allocation for substring as well
+    while (words-- >= 0) // allocation for substring as well
     {   
         if (i == 0)
         {
             total_array[i] = malloc(sizeof(char));
             if (!total_array[i])
                 return NULL;
-            total_array[i][0] = '\0';
+            total_array[i++][0] = '\0';
         }
         total_array[i++] = substring(s, c);
-        x++;
     }
     total_array[i] = NULL;
-
     return (total_array);
 }
 

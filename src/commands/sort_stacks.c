@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:50:32 by pfalli            #+#    #+#             */
-/*   Updated: 2024/04/08 17:02:45 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/09 15:20:49 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	int length_a;
 
 	length_a = stack_len(*a);
-	if (length_a-- > 3 && !stack_sorted(*a)) // length_a-- DIDNT WORK! why?
+	if (length_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
 	if (length_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
