@@ -6,60 +6,61 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:45:29 by pfalli            #+#    #+#             */
-/*   Updated: 2024/04/09 14:51:48 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/09 15:44:22 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	stack_len(t_stack_node *stack) //Define a function that calculates and returns the length of a stack
+int	stack_len(t_stack_node *stack)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (!stack)
-		return(0);
+		return (0);
 	while (stack)
 	{
 		stack = stack->next;
 		count++;
 	}
-	return(count);
+	return (count);
 }
 
-t_stack_node	*find_last(t_stack_node *stack) //Define a function that returns the pointer to the last node
+t_stack_node	*find_last(t_stack_node *stack)
 {
-	if(!stack)
-		return NULL;
-	while (stack->next) // stack points to the current node....stack->next points to the next node
+	if (!stack)
+		return (NULL);
+	while (stack->next)
 	{
 		stack = stack->next;
 	}
-	return(stack);
+	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack) //Define a function that checks if the stack is sorted in ascending order
+bool	stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
-		return 1;
-	//Loop until the second last of the stack is reached
+		return (1);
 	while (stack->next)
 	{
 		if (stack->data > stack->next->data)
-			return false;
+			return (false);
 		stack = stack->next;
 	}
-	return true;
+	return (true);
 }
 
-t_stack_node	*find_min(t_stack_node *stack) //Define a function that searches a stack and returns the pointer node with the smallest number
+t_stack_node	*find_min(t_stack_node *stack)
 {
-	long min;
-	t_stack_node *small_node = NULL;
+	long			min;
+	t_stack_node	*small_node;
 
+	small_node = NULL;
 	if (!stack)
-		return NULL;
+		return (NULL);
 	min = LONG_MAX;
-	while(stack)
+	while (stack)
 	{
 		if (stack->data < min)
 		{
@@ -67,21 +68,21 @@ t_stack_node	*find_min(t_stack_node *stack) //Define a function that searches a 
 			small_node = stack;
 		}
 		stack = stack->next;
-	}	
+	}
 	return (small_node);
 }
 
-t_stack_node	*find_max(t_stack_node *stack) //Define a function that searches a stack and returns the node with the biggest number
+t_stack_node	*find_max(t_stack_node *stack)
 {
-	long max;
-	t_stack_node *big;
+	long			max;
+	t_stack_node	*big;
 
-	if(!stack)
-		return NULL;
+	if (!stack)
+		return (NULL);
 	max = LONG_MIN;
 	while (stack)
 	{
-		if(stack->data > max)
+		if (stack->data > max)
 		{
 			max = stack->data;
 			big = stack;
@@ -89,39 +90,4 @@ t_stack_node	*find_max(t_stack_node *stack) //Define a function that searches a 
 		stack = stack->next;
 	}
 	return (big);
-}
-
-t_stack_node	*get_cheapest_node(t_stack_node *stack) //Define a function that searches for the cheapest node, that is set by bool
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	free(stack);
-	return (NULL);
-}
-
-void	put_to_top(t_stack_node **stack, t_stack_node *top_node, char stack_name) //Define a function that moves the required node to the top of the stack
-{
-	while (*stack != top_node) //Check if the required node is not already the first node
-	{
-		if (stack_name == 'a') //If not, and it is stack `a`, execute the following
-		{
-			if (top_node->above_median)
-				ra(stack, false);
-			else
-				rra(stack, false);
-		}
-		else if (stack_name == 'b') //If not, and it is stack `b`, execute the following
-		{
-			if (top_node->above_median)
-				rb(stack, false);
-			else
-				rrb(stack, false);
-		}	
-	}
 }

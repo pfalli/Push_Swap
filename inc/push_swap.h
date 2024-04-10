@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 09:52:52 by pfalli            #+#    #+#             */
-/*   Updated: 2024/04/09 13:40:17 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/10 09:57:58 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,7 @@ void	        sort_three(t_stack_node **a);
 void	        sort_stacks(t_stack_node **a, t_stack_node **b);
 
 
+
+//  DELETE LATER
+//  void	print_stack(t_stack_node *a);
 #endif

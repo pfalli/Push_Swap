@@ -6,50 +6,48 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:49:32 by pfalli            #+#    #+#             */
-/*   Updated: 2024/03/12 10:49:32 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/04/09 17:36:16 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	push(t_stack_node **dst, t_stack_node **src) //Define a function that pushes a top node, from one stack to another's top node
+static void	push(t_stack_node **dst, t_stack_node **src)
 {
-    t_stack_node *temp;
+	t_stack_node	*temp;
 
-    if (!*src)
-        return;
-    temp = (*src); // pop out the top number
-    *src = (*src)->next ;
-    if (*src)
-        (*src)->prev = NULL;
-    temp->prev = NULL;
-
-    if (!*dst)
-    {
-        *dst = temp;
-        temp->next = NULL;
-    }
-    else
-    {
-        temp->next = *dst; // connect next to second node
-        temp->next->prev = temp; // connect prev second note to temp
-        *dst = temp; // move the main pointer to temp
-    }
+	if (!*src)
+		return ;
+	temp = (*src);
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	temp->prev = NULL;
+	if (!*dst)
+	{
+		*dst = temp;
+		temp->next = NULL;
+	}
+	else
+	{
+		temp->next = *dst;
+		temp->next->prev = temp;
+		*dst = temp;
+	}
 }
 
-
-void pa(t_stack_node **a, t_stack_node **b , bool print) // to stack A
+void	pa(t_stack_node **a, t_stack_node **b, bool print)
 {
-    push(a, b);
-    if (!print)
-        ft_printf("pa\n");
+	push(a, b);
+	if (!print)
+		ft_printf("pa\n");
 }
 
-void pb(t_stack_node **b, t_stack_node **a, bool print) // to stack B
+void	pb(t_stack_node **b, t_stack_node **a, bool print)
 {
-    push(b, a);
-    if (!print)
-        ft_printf("pb\n");
+	push(b, a);
+	if (!print)
+		ft_printf("pb\n");
 }
 
 //  typedef struct s_stack_node
@@ -58,7 +56,7 @@ void pb(t_stack_node **b, t_stack_node **a, bool print) // to stack B
 //      struct s_stack_node *next;
 //      struct s_stack_node *prev;
 //  } t_stack_node;
-//  
+//
 //  int main()
 //  {
 //      // Create two nodes for the source stack
@@ -69,10 +67,10 @@ void pb(t_stack_node **b, t_stack_node **a, bool print) // to stack B
 //      src->next->next = NULL;
 //      src->next->prev = src;
 //      src->prev = NULL;
-//  
+//
 //      // Create an empty destination stack
 //      t_stack_node *dst = NULL;
-//  
+//
 //      // Print the source stack before the push
 //      printf("Source stack before push: ");
 //      t_stack_node *current = src;
@@ -82,10 +80,10 @@ void pb(t_stack_node **b, t_stack_node **a, bool print) // to stack B
 //          current = current->next;
 //      }
 //      printf("\n");
-//  
+//
 //      // Call the push function
 //      push(&dst, &src);
-//  
+//
 //      // Print the source stack after the push
 //      printf("Source stack after push: ");
 //      current = src;
@@ -95,7 +93,7 @@ void pb(t_stack_node **b, t_stack_node **a, bool print) // to stack B
 //          current = current->next;
 //      }
 //      printf("\n");
-//  
+//
 //      // Print the destination stack after the push
 //      printf("Destination stack after push: ");
 //      current = dst;
@@ -105,6 +103,6 @@ void pb(t_stack_node **b, t_stack_node **a, bool print) // to stack B
 //          current = current->next;
 //      }
 //      printf("\n");
-//  
-//      return 0;
+//
+//      return (0);
 //  }
