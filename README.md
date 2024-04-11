@@ -2,7 +2,7 @@
 ```
 42_Courses : Push_Swap (100%)
 ```
-![https://github.com/pfalli/Push_Swap/blob/master/visual.gif]
+![visual.gif](https://github.com/pfalli/Push_Swap/blob/master/visual.gif)
 
 Learning about Sorting Algorithm: 
 https://www.freecodecamp.org/news/sorting-algorithms-explained-with-examples-in-python-java-and-c/
