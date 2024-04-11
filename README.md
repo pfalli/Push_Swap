@@ -4,14 +4,16 @@
 ```
 ![visual.gif](https://github.com/pfalli/Push_Swap/blob/master/visual.gif)
 
-Learning about Sorting Algorithm: 
+Visualizer thanks to o-reo!!! You can find how to install it here (https://github.com/o-reo/push_swap_visualizer)
+
+# Study material
+```
+
+Learning about Sorting Algorithm:
 https://www.freecodecamp.org/news/sorting-algorithms-explained-with-examples-in-python-java-and-c/
 
-Idea of the Project and the Algorithm:
+Idea of the Algorithm:
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
-
-Video tutorial:
-https://www.youtube.com/watch?v=wRvipSG4Mmk
 
 Linked List:
 https://push_swap.simple.ink/linked-list-44c2318ba2524bddbab24dcd288c24cb
@@ -28,9 +30,6 @@ https://www.upgrad.com/tutorials/software-engineering/c-tutorial/stack-using-lin
 Adding node to beginning of the list:
 https://www.youtube.com/watch?v=YL8MnLAJOMg&list=PLBlnK6fEyqRi3-lvwLGzcaquOs5OBTCww&index=13
 
-
-
-
-CREATE DOUBLY LINK LIST. STACK
+CREATE DOUBLY LINK LIST STACK
 https://www.youtube.com/watch?v=EgrSkwnuZUU&list=PLBlnK6fEyqRg7pacSDMgPn7vDVhz3N1uf&index=7
 
