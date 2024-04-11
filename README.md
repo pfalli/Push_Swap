@@ -1,5 +1,7 @@
-<img align="center" width=100% src="https://github.com/pfalli/Push_Swap/blob/master/visual.gif">
-<h1 align="center">Hello there 👋, I'm Pierotti</h1>
+# Push_Swap
+```
+42_Courses : Push_Swap (100%)
+```
 ![https://github.com/pfalli/Push_Swap/blob/master/visual.gif]
 
 Learning about Sorting Algorithm: 
