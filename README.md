@@ -1,5 +1,6 @@
 # Push_Swap
 ```
+Using Stack Data Structure
 42_Courses : Push_Swap (100%)
 ```
 ![visual.gif](https://github.com/pfalli/Push_Swap/blob/master/visual.gif)
